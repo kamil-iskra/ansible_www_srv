@@ -1,0 +1,25 @@
+---
+- name: Instalacja i konfiguracja serwera WWW
+  hosts: servers
+  become: yes
+  vars_files:
+    - group_vars/servers.yml
+
+  roles:
+    - role: geerlingguy.nginx
+
+  tasks:
+    - name: Wdrozenie prostej strony index.html
+      ansible.builtin.template:
+        src: templates/index.html.j2
+        dest: "{{ website_dir_root }}/index.html"
+        owner: www-data
+        group: www-data
+        mode: '0644'
+      notify: Restart Nginx
+
+  handlers:
+    - name: Restart Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted

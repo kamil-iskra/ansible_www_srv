@@ -1,0 +1,6 @@
+---
+# Ścieżka do katalogu, w którym zostanie umieszczona strona WWW
+website_dir_root: /var/www/html
+
+# Treść, która zostanie umieszczona w pliku index.html
+website_content: "Hello World!"
