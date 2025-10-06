@@ -4,6 +4,7 @@
   become: yes
   vars_files:
     - group_vars/servers.yml
+    - passwd.yml
 
   roles:
     - role: geerlingguy.nginx
